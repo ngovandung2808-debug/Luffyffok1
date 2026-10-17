@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chúc mừng 20/10 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ffb6c1, #ffc3a0);
+}
+
+.card {
+    width: 90%;
+    max-width: 400px;
+    padding: 35px 22px;
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    border-radius: 25px;
+    box-shadow: 0 10px 35px #d6336c55;
+    animation: appear 1.5s ease;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff4081;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.flower {
+    font-size: 65px;
+    animation: shake 2s infinite;
+}
+
+p {
+    color: #b03060;
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+button {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#message {
+    display: none;
+    color: #ff4081;
+    font-weight: bold;
+}
+
+.fall {
+    position: absolute;
+    top: -30px;
+    animation: falling linear infinite;
+    pointer-events: none;
+}
+
+@keyframes falling {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+@keyframes appear {
+    from {opacity: 0; transform: scale(0.7);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+@keyframes shake {
+    0%, 100% {transform: rotate(-8deg);}
+    50% {transform: rotate(8deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="flower">💐</div>
+
+    <h1>Happy 20/10 💖</h1>
+
+    <p>
+        Chúc mừng ngày Phụ nữ Việt Nam! 🌷<br>
+        Chúc bạn luôn xinh tươi, vui vẻ,<br>
+        hạnh phúc và gặp nhiều may mắn.<br>
+        Mong mọi điều tốt đẹp nhất<br>
+        sẽ đến với bạn! 💕
+    </p>
+
+    <button onclick="showLove()">
+        Nhấn vào đây nè 💌
+    </button>
+
+    <p id="message">
+        Bạn xứng đáng nhận được thật nhiều yêu thương! 💗🌹
+    </p>
+</div>
+
+<script>
+function showLove() {
+    document.getElementById("message").style.display = "block";
+    createHearts();
+}
+
+function createHearts() {
+    for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = ["💗", "💖", "🌸", "💕"][
+            Math.floor(Math.random() * 4)
+        ];
+
+        heart.className = "fall";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 4) + "s";
+        heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
+}
+
+setInterval(() => {
+    let flower = document.createElement("div");
+    flower.className = "fall";
+    flower.innerHTML = ["🌸", "🌷", "💗"][
+        Math.floor(Math.random() * 3)
+    ];
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (4 + Math.random() * 5) + "s";
+    document.body.appendChild(flower);
+
+    setTimeout(() => flower.remove(), 9000);
+}, 500);
+</script>
+
+</body>
+</html>
